@@ -1,0 +1,11 @@
+{
+  "name": "static-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/guo-jing/static-server.git",
+  "author": "guojing <343630774@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^13.11.1"
+  }
+}
