@@ -7,8 +7,17 @@ const server = http.createServer();
 server.on('request', (request, response) => {
     let requestPath = request.url.substr(1);
     let filePath = path.join('public', requestPath);
-    fs.readFile(filePath, {flag: 'a+'}, (error, data) => {
-        response.end(data.toString());
+    fs.readFile(filePath, {flag: 'r'}, (error, data) => {
+        console.log('filePath');
+        console.log(filePath);
+        if (error && error.errno === -2) {
+            fs.readFile('404.html', {flag: 'r'}, (error, data) => {
+                response.end(data.toString());
+                return;
+            })
+        } else {
+            response.end(data.toString());
+        }
     })
 });
 
