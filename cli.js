@@ -3,7 +3,8 @@ const api = require('./index.js')
 
 const args = process.argv.slice(2)
 let targetPath = process.cwd()
-const commandOptions = ['-r']
+let port = 8888
+const commandOptions = ['-r', '-p']
 const options = []
 
 for (let i = 0; i < args.length; i += 2) {
@@ -14,7 +15,7 @@ for (let i = 0; i < args.length; i += 2) {
                 value: args[i + 1]
             })
         } else {
-            console.log(`选项${args[i]}缺少参数`)
+            console.log(`选项 ${args[i]} 缺少参数`)
             return
         }
     } else {
@@ -22,14 +23,16 @@ for (let i = 0; i < args.length; i += 2) {
         return
     }
 }
-console.log('options')
-console.log(options)
+
 for (let i = 0; i < options.length; i++) {
     switch (options[i].key) {
         case '-r':
             targetPath = options[i].value
             break
+        case '-p':
+            port = options[i].value
+            break
     }
 }
 
-api.start(targetPath)
+api.start(targetPath, port)
