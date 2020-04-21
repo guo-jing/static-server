@@ -1,7 +1,7 @@
 # 安装
 `yarn global add static-server-gj`
 # 使用
-在当前目录启动服务，端口为8888
+以当前目录为根目录启动服务，端口为8888
 
 `ss`
 
