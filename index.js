@@ -23,6 +23,8 @@ module.exports.start = (path, port) => {
     server.on('request', (request, response) => {
         let requestPath = request.url.substr(1);
         let filePath = p.join(path, requestPath);
+        console.log('filePath')
+        console.log(filePath)
         fs.readFile(filePath, {flag: 'r'}, (error, data) => {
             if (error && error.code === 'ENOENT') {
                 fs.readFile(p.join(__dirname, '404.html'), {flag: 'r'}, (error, data) => {
